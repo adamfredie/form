@@ -43,7 +43,7 @@
 		function send(){
       $("#submit").loading();
 			const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/mobileverfication'
-			const number = document.getElementById('number').value
+			const number = "91" + document.getElementById('number').value
 			const Process = 3
 
 			axios.post(accessCodeURL,{
