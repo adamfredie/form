@@ -235,8 +235,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					Other
 				</label>
 			</fieldset>
-			<div class="error-message" style="display:none;color: red;" id="error-message">All input fields are required</div>
-			<div class="error-message" style="display:none;color: red;" id="interests-message">Select atleast 1 interest</div>
+			<div class="errors">
+				<div class="error-message" style="display:none;color: red;" id="error-message">All input fields are required</div>
+				<div class="error-message" style="display:none;color: red;" id="interests-message">Select atleast 1 interest</div>
+			</div>
 			<input type="button" class="submit-button" id="submit" onclick="send()" value="Submit">
 
 		</form>

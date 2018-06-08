@@ -703,7 +703,7 @@ footer {
 			}
 		}
 		fieldset {
-			margin-bottom:50px;
+			margin-bottom:65px;
 		}
 		legend {
 			font-size:22px;
@@ -1023,6 +1023,20 @@ footer {
 	}
 	.error-message {
 		font-size:16px;
+	}
+}
+
+.errors {
+	position:relative;
+	.error-message:first-child {
+		color: red;
+    position: absolute;
+    top: -55px;
+	}
+	.error-message:nth-child(2) {
+		color: red;
+    position: absolute;
+    top: -30px;
 	}
 }
 
