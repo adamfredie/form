@@ -546,7 +546,7 @@ footer {
       border-bottom: 1px solid;
       line-height: 1.5; }
   .form-wrap fieldset {
-    margin-bottom: 50px; }
+    margin-bottom: 65px; }
   .form-wrap legend {
     font-size: 22px; }
 
@@ -826,6 +826,17 @@ footer {
 
   .error-message {
     font-size: 16px; } }
+.errors {
+  position: relative; }
+  .errors .error-message:first-child {
+    color: red;
+    position: absolute;
+    top: -55px; }
+  .errors .error-message:nth-child(2) {
+    color: red;
+    position: absolute;
+    top: -30px; }
+
 @media (max-width: 419px) {
   .quiz-history .school-logo-list ul li {
     width: 100%;
