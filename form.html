@@ -11,8 +11,26 @@
 	<script src="./src/loading.js"></script>
 
 	<script type="text/javascript">
+
+	$(document).ready(function(){
+		$('#accessCode').keypress(function(e) {
+			e=e||window.event;
+			var keyCode = e.keyCode;
+			var len =  $(this).val().length+1
+			console.log('len',len);
+			if(keyCode==13) {
+     		send()
+				return false
+  		}else if (len > 8) {
+				e.preventDefault()
+			}
+
+		});
+	})
+
 	function send() {
         $("#submit").loading();
+				console.log('asdf');
 		const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/accesscodeverification'
 		const accessCodeID = document.getElementById('accessCode').value
 		const Process = 1
@@ -27,7 +45,7 @@
 				document.getElementById('error-message').style.display = 'block';
 				// document.getElementById('').innerHTML = 'Invalid Code'
                 $('#submit').loading('stop');
-            }else {
+      }else {
 				localStorage.setItem("accessCodeID",accessCodeID)
 				window.location.href = 'email-verification.html'
 			}
@@ -47,13 +65,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Google Tag Manager -->
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 
 })(window,document,'script','dataLayer','GTM-MGWRM8M');</script>
 

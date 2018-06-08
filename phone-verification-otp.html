@@ -11,6 +11,17 @@
 
 	<script type="text/javascript">
 		console.log('accessCode',localStorage.getItem("number"));
+		$(document).ready(function(){
+			$('#otp').keypress(function(e) {
+				e=e||window.event;
+				var keyCode = e.keyCode;
+				if(keyCode==13) {
+	     		send()
+					return false
+	  		}
+
+			});
+		})
 		function send(){
             $("#submit").loading();
 			const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/mobileverfication'

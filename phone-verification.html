@@ -5,13 +5,43 @@
 	<title>Enter Phone Number</title>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 	<link href="./src/loading.css" rel="stylesheet">
 	<script src="./src/loading.js"></script>
 
 	<script type="text/javascript">
+
+	$(document).ready(function(){
+		$(document).ready(function(){
+			$('#email').keypress(function(e) {
+				e=e||window.event;
+				var keyCode = e.keyCode;
+				if(keyCode==13) {
+	     		send()
+					return false
+	  		}
+
+			});
+		})
+
+		$('#number').keypress(function(e) {
+			e=e||window.event;
+			var keyCode = e.keyCode;
+			var len =  $(this).val().length+1
+			console.log('len',len);
+			if(keyCode===13) {
+				send()
+				return false
+			}else if (keyCode===101 || len > 10) {
+				e.preventDefault()
+			}
+
+		});
+	})
+
 		function send(){
-            $("#submit").loading();
+      $("#submit").loading();
 			const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/mobileverfication'
 			const number = document.getElementById('number').value
 			const Process = 3
@@ -24,8 +54,8 @@
 				console.log('response',response);
 				console.log('result',response.data.ResponseMessage);
 				if(!response.data.Status){
-                    $("#submit").loading('stop');
-					document.getElementById('error-message').style.display = 'block';
+          $("#submit").loading('stop');
+					document.getElementById('error').style.display = 'block';
 				}else {
 
 					localStorage.setItem("number",number)
@@ -34,7 +64,7 @@
 			}).catch(error=>{
                 $("#submit").loading('stop');
 				console.log('error',error);
-            	document.getElementById('error-message').style.display = 'block';
+            	document.getElementById('error').style.display = 'block';
 			})
 
 		}
@@ -95,7 +125,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<form action="" class="form-d">
 				<label for="" class="form--label form-c__phone">
 					Phone Number <span class="required">*</span><br>
-					<input type="number"id="number" placeholder="919018090180">
+					<input type="number" id="number" placeholder="919018090180" >
 					<div class="error-message" id="error">Please enter a valid mobile number For example (919876236709)</div>
 				</label> <br>
 				<input class="submit-button" type="button" id="submit" value="Submit" onclick="send()">
