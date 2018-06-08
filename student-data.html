@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Enter Student Information</title>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="shortcut icon" type="image/png" href="images/qbiz-favicon.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link href="./src/loading.css" rel="stylesheet">
+	<script src="./src/loading.js"></script>
+
+	<script type="text/javascript">
+		function send(){
+            $("#submit").loading();
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('interests-message').style.display = 'none';
+			const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/studentdatasubmission'
+			const Process = 4;
+
+			const myobj ={};
+			myobj.AccessCodeId = localStorage.getItem("accessCodeID");
+			myobj.Process = Process;
+			myobj.FullName  = document.getElementById('fullname').value;
+			myobj.Grade  = document.getElementById('grade').value;
+			myobj.Gender  = document.getElementById('gender').value;
+			myobj.DateOfBirth  = document.getElementById('date').value;
+			myobj.AddressLine1  = document.getElementById('address1').value;
+			myobj.AddressLine2  = document.getElementById('address2').value;
+            myobj.City  = document.getElementById('city').value;
+			myobj.State  = document.getElementById('state').value;
+			myobj.Pincode  = document.getElementById('pincode').value;
+			myobj.CurrentStream  = document.getElementById('stream').value;
+			myobj.InterestsAfterHighSchoolMedical  = document.getElementById('medical').checked ? 1 :0;
+			myobj.InterestsAfterHighSchoolNonMedical  = document.getElementById('non-medical').checked ? 1 :0;
+			myobj.InterestsAfterHighSchoolCommerce  = document.getElementById('commerce').checked ? 1 :0;
+			myobj.InterestsAfterHighSchoolArts  = document.getElementById('arts').checked ? 1 :0;
+			myobj.InterestsAfterHighSchoolComputerScience  = document.getElementById('computer-science').checked ? 1 :0;
+			myobj.InterestsAfterHighSchoolStudyAbroad  = document.getElementById('study-abroad').checked ? 1 :0;
+			myobj.InterestsAfterHighSchoolOther  = document.getElementById('other').checked ? 1 :0;
+			console.log('myobj',myobj);
+			if (myobj.FullName && myobj.DateOfBirth && myobj.AddressLine1 && myobj.State && myobj.Pincode) {
+				if (myobj.InterestsAfterHighSchoolMedical||
+					myobj.InterestsAfterHighSchoolNonMedical||
+					myobj.InterestsAfterHighSchoolCommerce||
+					myobj.InterestsAfterHighSchoolArts||
+					myobj.InterestsAfterHighSchoolComputerScience||
+					myobj.InterestsAfterHighSchoolStudyAbroad||
+					myobj.InterestsAfterHighSchoolOther){
+					axios.post(accessCodeURL,{
+						AccessCodeId:myobj.AccessCodeId,
+						Process:myobj.Process,
+						FullName:myobj.FullName,
+						Grade :myobj.Grade,
+						Gender:myobj.Gender,
+						DateOfBirth:myobj.DateOfBirth,
+						AddressLine1:myobj.AddressLine1,
+						AddressLine2:myobj.AddressLine2,
+						State  :myobj.State,
+						Pincode :myobj.Pincode,
+						CurrentStream:myobj.CurrentStream,
+						InterestsAfterHighSchoolMedical: myobj.InterestsAfterHighSchoolMedical,
+						InterestsAfterHighSchoolNonMedical:myobj.InterestsAfterHighSchoolNonMedical,
+						InterestsAfterHighSchoolCommerce  :myobj.InterestsAfterHighSchoolCommerce,
+						InterestsAfterHighSchoolArts  :myobj.InterestsAfterHighSchoolArts,
+						InterestsAfterHighSchoolComputerScience:myobj.InterestsAfterHighSchoolComputerScience,
+						InterestsAfterHighSchoolStudyAbroad:myobj.InterestsAfterHighSchoolStudyAbroad,
+						InterestsAfterHighSchoolOther:myobj.InterestsAfterHighSchoolOther
+					}).then(response=>{
+						console.log('response',response);
+//					 console.log('result',response.data.ResponseMessage);
+					// if(!response.data.Status){
+					// 	alert('Check form details')
+					// }else {
+					// 	alert('registration successfully completed')
+					// }
+						window.location.href = 'successful.html'
+					}).catch(error=>{
+						console.log('error',error);
+						alert('err',error)
+					})
+				}else {
+                    $("#submit").loading('stop');
+                    document.getElementById('interests-message').style.display = 'block';
+				}
+
+
+			}else {
+                $("#submit").loading('stop');
+				document.getElementById('error-message').style.display = 'block';
+			}
+
+		}
+	</script>
+	<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-MGWRM8M');</script>
+
+<!-- End Google Tag Manager -->
+</head>
+<body>
+	<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGWRM8M"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+<div class="masthead-wrap container-fluid">
+		<header class="masthead container">
+			<nav>
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
+				</div>
+				<ul class="navigation">
+					<!-- <li><a href="register.html">Register Your School</a></li> -->
+					<!-- <li><a href="">Enter Student Code</a></li> -->
+				</ul>
+			</nav>
+		</header>
+	</div>
+	<div class="bighead">
+		<div class="container">
+			<h1>Student Information</h1>
+		</div>
+	</div>
+	<div class="form-container container">
+		<div class="form-image">
+			<img src="images/qbiz-prizes.jpg" alt="">
+		</div>
+		<div class="form-wrap">
+		<div class="form-brief">
+			Fill in fields below for us to reach out to you if you win the lucky draw
+			<br>
+			<br>
+			<div class="warning-message">* mandatory questions</div>
+		</div>
+		<form action="" class="form-e">
+			<label for="" class="form--label form-e__name">
+				Full Name <span class="required">*</span> <br>
+				<input type="text" id="fullname" placeholder="John Doe">
+				<div class="error-message" id="">Invalid Code</div>
+			</label> <br>
+			<label for="" class="form--label form-e__grade">
+				Grade <span class="required">*</span> <br>
+				  <select  id="grade">
+				    <option value="1">11th</option>
+				    <option value="0">12th</option>
+				  </select>
+				  <div class="error-message" id="">Invalid Code</div>
+			</label> <br>
+			<label for="" class="form--label form-e__gender">
+				Gender <span class="required">*</span> <br>
+				  <select id="gender">
+				    <option value="1">Male</option>
+				    <option value="0">Female</option>
+				  </select>
+				  <div class="error-message" id="">Invalid Code</div>
+			</label> <br>
+			<label for="" class="form--label form-e__dob">
+				Date Of Birth <span class="required">*</span> <br>
+				<input type="date" id="date">
+			</label> <br>
+			<label for="" class="form--label form-e__address-1">
+				Address Line 1 <span class="required">*</span><br>
+				<input type="text" id="address1">
+			</label> <br>
+			<label for="" class="form--label form-e__address-2">
+				Address Line 2<br>
+				<input type="text" id="address2">
+			</label> <br>
+			<label for="" class="form--label form-e__city">
+				City <span class="required">*</span><br>
+				<input type="text" id="city">
+			</label> <br>
+			<label for="" class="form--label form-e__state">
+				State <span class="required">*</span><br>
+				<input type="text" id="state">
+			</label> <br>
+			<label for="" class="form--label form-e__pin">
+				Pincode <span class="required">*</span><br>
+				<input type="number" id="pincode">
+			</label> <br>
+			<label for="" class="form--label form-e__stream">
+				Current Stream <span class="required">*</span><br>
+				  <select id="stream">
+				    <option value="0" >Arts</option>
+				    <option value="1" >Commerce</option>
+				    <option value="2" >Non-Medical</option>
+				    <option value="3" >Medical</option>
+				  </select>
+			</label> <br>
+			<fieldset>
+				<legend>
+					Interests After High School <span class="required">*</span>
+				</legend>
+				<label for="medical" class="interest--label">
+					<input type="checkbox" name="interest" value="Medical" id="medical">
+					Medical
+				</label>
+				<label for="non-medical" class="interest--label">
+					<input type="checkbox" name="interest" value="Non-Medical" id="non-medical">
+					Non-Medical
+				</label>
+				<label for="commerce" class="interest--label">
+					<input type="checkbox" name="interest" value="Commerce" id="commerce">
+					Commerce
+				</label>
+				<label for="arts" class="interest--label">
+					<input type="checkbox" name="interest" value="Arts" id="arts">
+					Arts
+				</label>
+				<label for="computer-science" class="interest--label">
+					<input type="checkbox" name="interest" value="Computer-Science" id="computer-science">
+					Computer Science
+				</label>
+				<label for="study-abroad" class="interest--label">
+					<input type="checkbox" name="interest" value="Study-Abroad" id="study-abroad">
+					Study Abroad
+				</label>
+				<label for="other" class="interest--label">
+					<input type="checkbox" name="interest" value="Other" id="other">
+					Other
+				</label>
+			</fieldset>
+			<div class="error-message" style="display:none;color: red;" id="error-message">All input fields are required</div>
+			<div class="error-message" style="display:none;color: red;" id="interests-message">Select atleast 1 interest</div>
+			<input type="button" class="submit-button" id="submit" onclick="send()" value="Submit">
+
+		</form>
+		</div>
+	</div>
+</body>
+</html>

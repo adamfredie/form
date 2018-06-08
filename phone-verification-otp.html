@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Enter Phone OTP</title>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link href="./src/loading.css" rel="stylesheet">
+	<script src="./src/loading.js"></script>
+
+	<script type="text/javascript">
+		console.log('accessCode',localStorage.getItem("number"));
+		function send(){
+            $("#submit").loading();
+			const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/mobileverfication'
+			const otp = document.getElementById('otp').value
+			const Process = 3
+
+			axios.post(accessCodeURL,{
+				AccessCodeId:localStorage.getItem("accessCodeID"),
+				Process:"3",
+				MobileNumber:localStorage.getItem("number"),
+				MobileNumberOTP:otp
+			}).then(response=>{
+				console.log('response',response);
+				// console.log('result',response.data.ResponseMessage);
+				if(!response.data.Status){
+                    $("#submit").loading('stop');
+					document.getElementById('error-message').style.display = 'block';
+				}else {
+					window.location.href = 'student-data.html'
+				}
+			}).catch(error=>{
+                $("#submit").loading('stop');
+            	document.getElementById('error-message').style.display = 'block';
+				console.log('error',error);
+			})
+
+		}
+	</script>
+	<link rel="stylesheet" href="style/style.css">
+	<link rel="shortcut icon" type="image/png" href="images/qbiz-favicon.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<!-- Google Tag Manager -->
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+
+})(window,document,'script','dataLayer','GTM-MGWRM8M');</script>
+
+<!-- End Google Tag Manager -->
+</head>
+<body>
+	<!-- Google Tag Manager (noscript) -->
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGWRM8M"
+
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- End Google Tag Manager (noscript) -->
+	<div class="masthead-wrap container-fluid">
+		<header class="masthead container">
+			<nav>
+				<div class="logo">
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
+				</div>
+				<ul class="navigation">
+					<!-- <li><a href="register.html">Register Your School</a></li> -->
+					<!-- <li><a href="">Enter Student Code</a></li> -->
+				</ul>
+			</nav>
+		</header>
+	</div>
+	<div class="bighead">
+		<div class="container">
+			<h1>Register Your Phone Number</h1>
+		</div>
+	</div>
+	<div class="form-container container">
+		<div class="form-image">
+			<img src="images/qbiz-prizes.jpg" alt="">
+		</div>
+		<div class="form-wrap">
+		<div class="form-brief">
+			Kindly enter the OTP sent to your mobile number
+		</div>
+			<form action="" class="form-d">
+				<label for="" class="form--label form-d__phone">
+					Enter 6 Digit OTP <span class="required">*</span> <br>
+					<input type="number" id="otp" placeholder="000000">
+					<div class="error-message" id="error-message">Please enter a valid 6 digit OTP</div>
+				</label> <br>
+				<input  type="button" class="submit-button" id="submit" value="Submit" onclick="send()">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

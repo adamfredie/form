@@ -1,0 +1,128 @@
+@media (max-width:992px) {
+	.navigation {
+		display:none;
+	}
+	.hero-lft-content {
+		width:100%!important;
+	}
+	.hero .date-band ul li {
+		font-size:18px;
+	}
+	.education {
+		margin-top:120px;
+	}
+	.education .education-box {
+		width:100%;
+		float:none!important;
+	}
+	.education .education-box div:nth-child(2) {
+		margin-bottom: 60px;
+	}
+	.rounds .col-md-4 {
+		margin:auto;
+	}
+	.flex-box {
+		display:block;
+	}
+	.testimonials .testimonial-box {
+		width:100%;
+		display:block;
+		width: 70%;
+		margin: auto;
+	}
+	.testimonials .testimonial-box:nth-child(2) {
+		margin:40px 0;
+		float:none!important;
+		width: 70%;
+		margin: auto;
+		margin-top: 40px;
+	}
+	.sponsor {
+		text-align:center;
+		 p {
+			width:100%;
+		}
+	}
+	footer .contact {
+		width:70%;
+	}
+}
+
+@media(max-width:768px) {
+	.hero .date-band ul li {
+		display:block;
+		width:100%;
+	}
+	.hero .header-left .hero-lft-content .hero-cta div {
+		display:block;
+		margin-bottom:40px;
+	}
+	.hero .header-left {
+		padding-top:65px;
+	}
+	.testimonials .testimonial-box {
+		width:100%;
+	}
+	.testimonials .testimonial-box:nth-child(2) {
+		width:100%;
+	}
+}
+
+@media(max-width:575px) {
+	.hero .header-left {
+		width:90%;
+	}
+	.hero h1 {
+		font-size:$h1-mobile;
+	}
+	.hero-lft-content h3 {
+		font-size:$h3-mobile;
+	}
+	.hero .header-left .hero-lft-content .hero-cta a {
+		font-size: 16px;
+	}
+	.education h2 {
+		font-size:$h2-mobile;
+	}
+	.education .education-box div h3 {
+		font-size:$h3-mobile;
+	}
+	.education .education-box h4 {
+		font-size:$h4-mobile;
+	}
+	.education .education-box div p {
+		font-size:$para-mobile;
+	}
+	.rounds h2 {
+		font-size:$h2-mobile;
+	}
+	.rounds .col-md-4 h3 {
+		@include h3-mobile;
+	}
+	.rounds .col-md-4 p {
+		font-size:$para-mobile;
+	}
+	.rounds .col-md-4 img {
+		    width: 110px;
+	}
+	.testimonials .testimonial-box p {
+		font-size:$para-mobile;
+	}
+	.testimonials .testimonial-box div h5, .testimonials .testimonial-box div span {
+		font-size:12px;
+	}
+	.testimonials .testimonial-box div {
+		margin-left:0px;
+	}
+	.quiz-history h2 {
+		font-size:$h2-mobile;
+	}
+	.quiz-history p {
+		font-size:$para-mobile;
+	}
+	.education-box {
+		width: 90%!important;
+    margin: auto;
+    display: block!important;
+	}
+}
