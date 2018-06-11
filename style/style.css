@@ -593,6 +593,15 @@ footer {
   background: #f9f9f9;
   border-radius: 10px; }
 
+.prefix {
+  display: inline-block;
+  font-size: 18px;
+  border-bottom: 1px solid black;
+  padding-bottom: 1px; }
+
+@media (min-width: 1200px) {
+  .form-c__phone input[type="number"] {
+    width: 90% !important; } }
 @media (max-width: 992px) {
   .masthead:before, .masthead:after {
     display: none; }
@@ -713,7 +722,10 @@ footer {
     text-align: center; }
 
   .success-container h3 {
-    margin: auto; } }
+    margin: auto; }
+
+  .form-c__phone input[type="number"] {
+    width: 92% !important; } }
 .success-container h3:hover a {
   color: #ffffff;
   text-decoration: none; }
@@ -824,6 +836,9 @@ footer {
   .form-wrap .form--label input {
     font-size: 16px; }
 
+  .prefix {
+    font-size: 16px; }
+
   .error-message {
     font-size: 16px; } }
 .errors {
@@ -836,6 +851,10 @@ footer {
     color: red;
     position: absolute;
     top: -30px; }
+
+.form-c__phone input[type="number"] {
+  width: 80%;
+  margin-left: 5px; }
 
 @media (max-width: 419px) {
   .quiz-history .school-logo-list ul li {
