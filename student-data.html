@@ -200,11 +200,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</label> <br>
 			<label for="" class="form--label form-e__city">
 				City <span class="required">*</span><br>
-				<input type="text" id="city">
+				<input type="text" onkeydown="return alphaOnly(event);" id="city">
 			</label> <br>
 			<label for="" class="form--label form-e__state">
 				State <span class="required">*</span><br>
-				<input type="text" id="state">
+				<input type="text" onkeydown="return alphaOnly(event);" id="state">
 			</label> <br>
 			<label for="" class="form--label form-e__pin">
 				Pincode <span class="required">*</span><br>
