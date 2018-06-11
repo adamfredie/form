@@ -16,6 +16,11 @@
 
 	<script type="text/javascript">
 
+	function alphaOnly(event){
+		var key = event.keyCode;
+  	return ((key >= 65 && key <= 90) || key == 8 || key == 32);
+  }
+
 	$(document).ready(function(){
 		$('#submit').keypress(function(e) {
 			e=e||window.event;
@@ -162,7 +167,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<form action="" class="form-e">
 			<label for="" class="form--label form-e__name">
 				Full Name <span class="required">*</span> <br>
-				<input type="text" id="fullname" placeholder="John Doe">
+				<input type="text" onkeydown="return alphaOnly(event);" id="fullname" placeholder="John Doe">
 				<div class="error-message" id="">Invalid Code</div>
 			</label> <br>
 			<label for="" class="form--label form-e__grade">
