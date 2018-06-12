@@ -17,15 +17,21 @@
 	<script type="text/javascript">
 
 	function alphaOnly(event){
+		console.log('keypress');
 		var key = event.keyCode;
-  	return ((key >= 65 && key <= 90) || key == 8 || key == 32);
+		if (key==13) {
+			send();
+			return false
+		}
+  	return ((key >= 65 && key <= 90) || key == 8 || key == 32 || key==9 || key==13);
   }
 
 	$(document).ready(function(){
-		$('#submit').keypress(function(e) {
+		$('.form-control').keypress(function(e) {
 			e=e||window.event;
 			var keyCode = e.keyCode;
 			if(keyCode==13) {
+				send()
 				return false
 			}
 
@@ -42,6 +48,8 @@
 			const myobj ={};
 			myobj.AccessCodeId = localStorage.getItem("accessCodeID");
 			myobj.Process = Process;
+			myobj.Number = localStorage.getItem("number");
+			myobj.Email = localStorage.getItem("email");
 			myobj.FullName  = document.getElementById('fullname').value;
 			myobj.Grade  = document.getElementById('grade').value;
 			myobj.Gender  = document.getElementById('gender').value;
@@ -167,7 +175,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<form action="" class="form-e">
 			<label for="" class="form--label form-e__name">
 				Full Name <span class="required">*</span> <br>
-				<input type="text" onkeydown="return alphaOnly(event);" id="fullname" placeholder="John Doe">
+				<input  type="text" onkeydown="return alphaOnly(event);" id="fullname" placeholder="John Doe">
 				<div class="error-message" id="">Invalid Code</div>
 			</label> <br>
 			<label for="" class="form--label form-e__grade">
@@ -188,15 +196,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</label> <br>
 			<label for="" class="form--label form-e__dob">
 				Date Of Birth <span class="required">*</span> <br>
-				<input type="date" id="date">
+				<input type="date" id="date"  max="1979-12-31">
 			</label> <br>
 			<label for="" class="form--label form-e__address-1">
 				Address Line 1 <span class="required">*</span><br>
-				<input type="text" id="address1">
+				<input class="form-control" type="text" id="address1">
 			</label> <br>
 			<label for="" class="form--label form-e__address-2">
 				Address Line 2<br>
-				<input type="text" id="address2">
+				<input class="form-control" type="text" id="address2">
 			</label> <br>
 			<label for="" class="form--label form-e__city">
 				City <span class="required">*</span><br>
@@ -208,7 +216,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</label> <br>
 			<label for="" class="form--label form-e__pin">
 				Pincode <span class="required">*</span><br>
-				<input type="number" id="pincode">
+				<input class="form-control" type="number"  id="pincode">
 			</label> <br>
 			<label for="" class="form--label form-e__stream">
 				Current Stream <span class="required">*</span><br>
