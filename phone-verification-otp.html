@@ -21,6 +21,20 @@
 	  		}
 
 			});
+			
+			$('#otp').keypress(function(e) {
+				e=e||window.event;
+				var keyCode = e.keyCode;
+				var len =  $(this).val().length+1
+				console.log('len',len);
+				if(keyCode===13) {
+					send()
+				return false
+				}else if (keyCode===101 || len > 6) {
+					e.preventDefault()
+				}
+
+			});
 		})
 		function send(){
             $("#submit").loading();
@@ -106,7 +120,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<form action="" class="form-d">
 				<label for="" class="form--label form-d__phone">
 					Enter 6 Digit OTP <span class="required">*</span> <br>
-					<input type="number" id="otp" placeholder="000000">
+					<input type="number" id="otp" placeholder="000000" min="0" max="999999">
 					<div class="error-message" id="error-message">Please enter a valid 6 digit OTP</div>
 				</label> <br>
 				<input  type="button" class="submit-button" id="submit" value="Submit" onclick="send()">

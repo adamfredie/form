@@ -49,7 +49,7 @@
 			myobj.AccessCodeId = localStorage.getItem("accessCodeID");
 			myobj.Process = Process;
 			myobj.Number = localStorage.getItem("number");
-			myobj.Email = localStorage.getItem("email");
+			myobj.EmailId = localStorage.getItem("email");
 			myobj.FullName  = document.getElementById('fullname').value;
 			myobj.Grade  = document.getElementById('grade').value;
 			myobj.Gender  = document.getElementById('gender').value;
@@ -79,6 +79,7 @@
 					axios.post(accessCodeURL,{
 						AccessCodeId:myobj.AccessCodeId,
 						Process:myobj.Process,
+						EmailId:myobj.EmailId,
 						FullName:myobj.FullName,
 						Grade :myobj.Grade,
 						Gender:myobj.Gender,
