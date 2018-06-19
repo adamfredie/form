@@ -12,25 +12,16 @@
 	<script type="text/javascript">
 		console.log('accessCode',localStorage.getItem("number"));
 		$(document).ready(function(){
-			$('#otp').keypress(function(e) {
-				e=e||window.event;
-				var keyCode = e.keyCode;
-				if(keyCode==13) {
-	     		send()
-					return false
-	  		}
 
-			});
-			
 			$('#otp').keypress(function(e) {
 				e=e||window.event;
 				var keyCode = e.keyCode;
 				var len =  $(this).val().length+1
-				console.log('len',len);
 				if(keyCode===13) {
 					send()
 				return false
 				}else if (keyCode===101 || len > 6) {
+                    console.log('really2')
 					e.preventDefault()
 				}
 
