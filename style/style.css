@@ -72,24 +72,6 @@ ul {
         .masthead .navigation li a:hover {
           background: #C91B1C;
           text-decoration: none; }
-  .masthead:before {
-    background: url(../images/graphic-3.png);
-    height: 15px;
-    width: 275px;
-    position: absolute;
-    content: '';
-    background-repeat: no-repeat;
-    right: -165px;
-    top: 13px; }
-  .masthead:after {
-    background: url(../images/graphic-3.png);
-    height: 15px;
-    width: 275px;
-    position: absolute;
-    content: '';
-    background-repeat: no-repeat;
-    right: 126px;
-    bottom: 5px; }
 
 .hero {
   position: relative;
@@ -736,7 +718,7 @@ footer {
     height: 192px;
     background-repeat: no-repeat;
     background-position-y: -9px;
-    width: 34%;
+    width: 190px;
     right: 0px;
     bottom: 121px;
     display: inline-block;
