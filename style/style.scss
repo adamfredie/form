@@ -778,6 +778,45 @@ footer {
 }
 
 
+// progress bar CSS start
+
+.progressbar-wrap {
+	width:100%;
+	display:inline-block;
+	margin-bottom:10px;
+}
+
+.progressbar li {
+	list-style-type:none;
+	float:left;
+	width:16.66%;
+	position:relative;
+}
+
+.progressbar li:before {
+	content:'';
+	width:20px;
+	height:20px;
+	line-height:20px;
+	display:block;
+	text-align:center;
+	margin:0 auto 10px;
+	border-radius:50%;
+	border:1px solid #bbb;
+}
+
+.progressbar .passed:before {
+	background:$gb-ufv-green-light;
+	border-color:$gb-ufv-green-light;
+}
+
+.progressbar .not-passed:before {
+	background:#bbb;
+}
+
+// progress bar CSS end
+
+
 // media queries start here
 
 @media (min-width:1200px) {
@@ -929,6 +968,7 @@ footer {
     color: #ffffff;
     text-decoration:none;
 }
+
 
 @media(max-width:575px) {
 	.hero-bg-mobile {

@@ -581,6 +581,35 @@ footer {
   border-bottom: 1px solid black;
   padding-bottom: 1px; }
 
+.progressbar-wrap {
+  width: 100%;
+  display: inline-block;
+  margin-bottom: 10px; }
+
+.progressbar li {
+  list-style-type: none;
+  float: left;
+  width: 16.66%;
+  position: relative; }
+
+.progressbar li:before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  display: block;
+  text-align: center;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  border: 1px solid #bbb; }
+
+.progressbar .passed:before {
+  background: #8BC53F;
+  border-color: #8BC53F; }
+
+.progressbar .not-passed:before {
+  background: #bbb; }
+
 @media (min-width: 1200px) {
   .form-c__phone input[type="number"] {
     width: 90% !important; } }
