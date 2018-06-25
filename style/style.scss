@@ -904,7 +904,7 @@ footer {
 
 
 
-@media(max-width:768px) {
+@media(max-width:767px) {
 	.hero {
 		min-height:550px;
 	}
@@ -996,7 +996,7 @@ footer {
 		width:90%;
 	}
 	.hero h1 {
-		font-size:$h1-mobile;
+		font-size:28px;
 	}
 	.hero-lft-content h3 {
 		font-size:$h3-mobile;
@@ -1085,6 +1085,15 @@ footer {
 	.error-message {
 		font-size:16px;
 	}
+	.masthead .logo {
+		width:80px;
+	}
+	.hero .header-left .hero-lft-content .hero-cta div {
+		margin-bottom:30px;
+	}
+	.hero .header-left {
+		padding-top:40px;
+	}
 }
 
 .errors {
@@ -1108,6 +1117,7 @@ footer {
 }
 
 
+
 @media(max-width:419px) {
 	.quiz-history .school-logo-list ul li {
 		width:100%;
@@ -1124,5 +1134,8 @@ footer {
 				width:50%;
 			}
 		}
+	}
+	.form-c__phone input[type="number"] {
+		width: 85% !important;
 	}
 }

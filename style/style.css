@@ -680,7 +680,7 @@ footer {
       width: 100%;
       height: 100%;
       border: 0; } }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .hero {
     min-height: 550px; }
 
@@ -767,7 +767,7 @@ footer {
     width: 90%; }
 
   .hero h1 {
-    font-size: 32px; }
+    font-size: 28px; }
 
   .hero-lft-content h3 {
     font-size: 20px; }
@@ -851,7 +851,16 @@ footer {
     font-size: 16px; }
 
   .error-message {
-    font-size: 16px; } }
+    font-size: 16px; }
+
+  .masthead .logo {
+    width: 80px; }
+
+  .hero .header-left .hero-lft-content .hero-cta div {
+    margin-bottom: 30px; }
+
+  .hero .header-left {
+    padding-top: 40px; } }
 .errors {
   position: relative; }
   .errors .error-message:first-child {
@@ -878,6 +887,9 @@ footer {
     font-size: 20px; }
     .form-wrap .form--label .error-message {
       font-size: 14px;
-      width: 50%; } }
+      width: 50%; }
+
+  .form-c__phone input[type="number"] {
+    width: 85% !important; } }
 
 /*# sourceMappingURL=style.css.map */
