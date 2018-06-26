@@ -43,11 +43,11 @@
 
 	function send() {
         $("#submit").loading();
-				console.log('loader working');
+		console.log('loader working');
 		const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/accesscodeverification'
 		const accessCodeID = document.getElementById('accessCode').value
 		const Process = 1
-
+		document.getElementById('error-message').style.display = 'none';
 		axios.post(accessCodeURL,{
 			AccessCodeId:accessCodeID,
 			Process:"1"
@@ -58,15 +58,23 @@
 				document.getElementById('error-message').style.display = 'block';
 				// document.getElementById('').innerHTML = 'Invalid Code'
                 $('#submit').loading('stop');
-      }else {
-				localStorage.setItem("accessCodeID",accessCodeID)
-				window.location.href = 'email-verification.html'
-			}
+      } else if (response.data.ResponseMessage == 'Code already Used') {
+				window.location.href = 'successful.html';
+	  } else if (response.data.ResponseMessage == 'Email and Mobile number already verified') {
+		  		localStorage.setItem("accessCodeID",accessCodeID);
+				window.location.href = 'student-data.html';
+	  } else if (response.data.ResponseMessage == 'Mobile number not verified') {
+		  		localStorage.setItem("accessCodeID",accessCodeID);
+		  		window.location.href = 'phone-verification.html';
+	  } else {
+				localStorage.setItem("accessCodeID",accessCodeID);
+				window.location.href = 'email-verification.html';
+		}
 		}).catch(error=>{
 			console.log('error',error);
     	    $('#submit').loading('stop');
 
-    })
+    });
 
 	}
 

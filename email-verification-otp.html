@@ -33,7 +33,7 @@
 			const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/emailverfication'
 			const otp = document.getElementById('otp').value
 			const Process = 2
-
+			document.getElementById('error-message').style.display = 'none';
 			axios.post(accessCodeURL,{
 				AccessCodeId:localStorage.getItem("accessCodeID"),
 				Process:"2",
