@@ -786,6 +786,10 @@ footer {
 	margin-bottom:10px;
 }
 
+.progressbar {
+	// counter-reset:step; enable step counter
+}
+
 .progressbar li {
 	list-style-type:none;
 	float:left;
@@ -794,15 +798,36 @@ footer {
 }
 
 .progressbar li:before {
+	// content:counter(step); enable step counter
+	// counter-increment:step;
 	content:'';
-	width:20px;
-	height:20px;
-	line-height:20px;
+	width:35px;
+	height:35px;
+	line-height:35px;
 	display:block;
 	text-align:center;
 	margin:0 auto 10px;
 	border-radius:50%;
 	border:1px solid #bbb;
+}
+
+.progressbar li:after {
+	content: '';
+	position:absolute;
+	width:100%;
+	height:5px;
+	background-color:#bbb;
+	top:15px;
+	left:-50%;
+	z-index:-1;
+}
+
+.progressbar li:first-child:after {
+	content:none;
+}
+
+.progressbar li.passed + li:after {
+	background-color:$gb-ufv-green-light;
 }
 
 .progressbar .passed:before {

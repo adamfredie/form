@@ -594,14 +594,30 @@ footer {
 
 .progressbar li:before {
   content: '';
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
   display: block;
   text-align: center;
   margin: 0 auto 10px;
   border-radius: 50%;
   border: 1px solid #bbb; }
+
+.progressbar li:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-color: #bbb;
+  top: 15px;
+  left: -50%;
+  z-index: -1; }
+
+.progressbar li:first-child:after {
+  content: none; }
+
+.progressbar li.passed + li:after {
+  background-color: #8BC53F; }
 
 .progressbar .passed:before {
   background: #8BC53F;

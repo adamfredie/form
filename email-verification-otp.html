@@ -120,7 +120,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<form action="" class="form-c">
 					<label for="" class="form--label form-c__email">
 						Enter 6 Digit OTP<span class="required">*</span><br>
-						<input type="number" id="otp" placeholder="000000" min="0" max="999999">
+						<input type="number" id="otp" placeholder="000000" min="0" max="999999" pattern="[0-9]*" inputmode="numeric">
 						<div class="error-message" id="error-message">Please enter a valid 6 digit OTP</div>
 					</label> <br>
 					<input class="submit-button" type="button" id="submit" value="Submit" onclick="send()">
