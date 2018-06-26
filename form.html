@@ -55,16 +55,17 @@
 			}).then(response => {
 				console.log('response', response);
 				console.log('result', response.data.ResponseMessage);
-				if (response.data.ResponseMessage == 'Access Code not found') {
+				var ResponseMessage = response.data.ResponseMessage;
+				if (ResponseMessage === 'Access Code not found') {
 					document.getElementById('error-message').style.display = 'block';
 					// document.getElementById('').innerHTML = 'Invalid Code'
 					$('#submit').loading('stop');
-				} else if (response.data.ResponseMessage == 'Code already Used') {
+				} else if (ResponseMessage === 'Code already Used') {
 					window.location.href = 'successful.html';
-				} else if (response.data.ResponseMessage == 'Email and Mobile number already verified') {
+				} else if (ResponseMessage === 'Email and Mobile number already verified') {
 					localStorage.setItem("accessCodeID", accessCodeID);
 					window.location.href = 'student-data.html';
-				} else if (response.data.ResponseMessage == 'Mobile number not verified') {
+				} else if (ResponseMessage === 'Mobile number not verified') {
 					localStorage.setItem("accessCodeID", accessCodeID);
 					window.location.href = 'phone-verification.html';
 				} else {
