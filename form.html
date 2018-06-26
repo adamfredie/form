@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Enter to Win</title>
@@ -11,103 +12,118 @@
 	<script src="./src/loading.js"></script>
 
 	<script type="text/javascript">
-
-	$(document).ready(function(){
-		$('#accessCode').keypress(function(e) {
-			e=e||window.event;
-			var keyCode = e.keyCode;
-			var len =  $(this).val().length+1
-			console.log('len',len);
-			if(keyCode==13) {
-     		send()
-				return false
-  		}else if (len > 8) {
-				e.preventDefault()
-			}
-
-		});
-		$('#accessCode').keypress(function(e) {
-				e=e||window.event;
+		$(document).ready(function () {
+			$('#accessCode').keypress(function (e) {
+				e = e || window.event;
 				var keyCode = e.keyCode;
-				var len =  $(this).val().length+1
-				console.log('len',len);
-				if(keyCode===13) {
+				var len = $(this).val().length + 1
+				console.log('len', len);
+				if (keyCode == 13) {
 					send()
-				return false
-				}else if (keyCode===101 || len > 7) {
+					return false
+				} else if (len > 8) {
 					e.preventDefault()
 				}
 
-		});
-	})
+			});
+			$('#accessCode').keypress(function (e) {
+				e = e || window.event;
+				var keyCode = e.keyCode;
+				var len = $(this).val().length + 1
+				console.log('len', len);
+				if (keyCode === 13) {
+					send()
+					return false
+				} else if (keyCode === 101 || len > 7) {
+					e.preventDefault()
+				}
 
-	function send() {
-        $("#submit").loading();
-		console.log('loader working');
-		const accessCodeURL = 'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/accesscodeverification'
-		const accessCodeID = document.getElementById('accessCode').value
-		const Process = 1
-		document.getElementById('error-message').style.display = 'none';
-		axios.post(accessCodeURL,{
-			AccessCodeId:accessCodeID,
-			Process:"1"
-		}).then(response=>{
-			console.log('response',response);
-			console.log('result',response.data.ResponseMessage);
-			if(response.data.ResponseMessage =='Access Code not found'){
-				document.getElementById('error-message').style.display = 'block';
-				// document.getElementById('').innerHTML = 'Invalid Code'
-                $('#submit').loading('stop');
-      } else if (response.data.ResponseMessage == 'Code already Used') {
-				window.location.href = 'successful.html';
-	  } else if (response.data.ResponseMessage == 'Email and Mobile number already verified') {
-		  		localStorage.setItem("accessCodeID",accessCodeID);
-				window.location.href = 'student-data.html';
-	  } else if (response.data.ResponseMessage == 'Mobile number not verified') {
-		  		localStorage.setItem("accessCodeID",accessCodeID);
-		  		window.location.href = 'phone-verification.html';
-	  } else {
-				localStorage.setItem("accessCodeID",accessCodeID);
-				window.location.href = 'email-verification.html';
+			});
+		})
+
+		function send() {
+			$("#submit").loading();
+			console.log('loader working');
+			const accessCodeURL =
+				'https://m5zr9p8k15.execute-api.ap-south-1.amazonaws.com/Qbiz2018/qbiz-api/accesscodeverification'
+			const accessCodeID = document.getElementById('accessCode').value
+			const Process = 1
+			document.getElementById('error-message').style.display = 'none';
+			axios.post(accessCodeURL, {
+				AccessCodeId: accessCodeID,
+				Process: "1"
+			}).then(response => {
+				console.log('response', response);
+				console.log('result', response.data.ResponseMessage);
+				if (response.data.ResponseMessage == 'Access Code not found') {
+					document.getElementById('error-message').style.display = 'block';
+					// document.getElementById('').innerHTML = 'Invalid Code'
+					$('#submit').loading('stop');
+				} else if (response.data.ResponseMessage == 'Code already Used') {
+					window.location.href = 'successful.html';
+				} else if (response.data.ResponseMessage == 'Email and Mobile number already verified') {
+					localStorage.setItem("accessCodeID", accessCodeID);
+					window.location.href = 'student-data.html';
+				} else if (response.data.ResponseMessage == 'Mobile number not verified') {
+					localStorage.setItem("accessCodeID", accessCodeID);
+					window.location.href = 'phone-verification.html';
+				} else {
+					localStorage.setItem("accessCodeID", accessCodeID);
+					window.location.href = 'email-verification.html';
+				}
+			}).catch(error => {
+				console.log('error', error);
+				$('#submit').loading('stop');
+			});
+
 		}
-		}).catch(error=>{
-			console.log('error',error);
-    	    $('#submit').loading('stop');
-
-    });
-
-	}
-
 	</script>
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="shortcut icon" type="image/png" href="images/qbiz-favicon.png">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+	    crossorigin="anonymous">
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+"
+	    crossorigin="anonymous"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Google Tag Manager -->
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	<script>
+		(function (w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				'gtm.start': new Date().getTime(),
+				event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
 
-	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+				'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
 
-})(window,document,'script','dataLayer','GTM-MGWRM8M');</script>
+		})(window, document, 'script', 'dataLayer', 'GTM-MGWRM8M');
+	</script>
 
-<!-- End Google Tag Manager -->
+	<!-- End Google Tag Manager -->
 </head>
+
 <body>
 	<!-- Google Tag Manager (noscript) -->
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGWRM8M"
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGWRM8M" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
 
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-<!-- End Google Tag Manager (noscript) -->
+	<!-- End Google Tag Manager (noscript) -->
 	<div class="masthead-wrap container-fluid">
 		<header class="masthead container">
 			<nav>
 				<div class="logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>
+					<a href="index.html">
+						<img src="images/logo.png" alt="">
+					</a>
 				</div>
 				<ul class="navigation">
 					<!-- <li><a href="register.html">Register Your School</a></li> -->
@@ -141,13 +157,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 			<form action="" class="form-a">
 				<label for="" class="form--label form-a__7-digit-label">
-					Enter your unique 7 digit Student Code <span class="required">*</span> <br>
+					Enter your unique 7 digit Student Code
+					<span class="required">*</span>
+					<br>
 					<input type="text" id="accessCode" placeholder="CHXXXXX">
 					<div class="error-message" id="error-message">Invalid Code. Please enter a valid code</div>
-				</label> <br>
+				</label>
+				<br>
 				<input type="button" id="submit" class="submit-button" value="Submit" onclick="send()">
 			</form>
 		</div>
 	</div>
 </body>
+
 </html>
